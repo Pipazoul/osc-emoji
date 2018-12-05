@@ -1,0 +1,62 @@
+<html>
+    <head>
+            <link rel="stylesheet" type="text/css" href="style.css" media="all"/>
+    </head>
+    <body>
+        <style> 
+            .emoji {
+                width: 50px;
+                height: 50px;
+                float: left;
+                margin: 5px;
+                color: white;
+                font-size: 40px; 
+                cursor: pointer;
+                transition: font-size 0.2s ease-in-out;
+            }
+
+            .emoji:hover {
+                font-size: 50px;
+            }
+
+            #emoji-1 {
+
+            }
+
+            #emoji-2 {
+
+            }
+        </style>
+        <p>OSC-EMOJI</p>
+
+
+        <div id="emoji-1" class="emoji"> 😍</div>
+        <div id="emoji-2" class="emoji"> 😁</div>
+
+        <script
+            src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous">
+        </script>
+        <script>
+        var apiUrl = "http://localhost:8080/api/emoji";
+
+        $(document).ready(function(){
+            console.log('hello !');
+
+
+            $("#emoji-1").click(function(){
+                console.log('emoji 1 !');
+                $.post(apiUrl, {emojiId: 1} );
+                $("#emoji-1")
+            });
+
+            $("#emoji-2").click(function(){
+                console.log('emoji 2 !');
+                $.post(apiUrl, {emojiId: 2} );
+            });
+
+        });
+</script>
+    </body>
+</html>

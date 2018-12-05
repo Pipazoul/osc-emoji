@@ -17,6 +17,14 @@ app.use(bodyParser.json());
 var port = process.env.PORT || 8080;        // set our port
 
 
+function sendViewMiddleware(req, res, next) {
+    res.sendView = function(view) {
+        return res.sendFile(__dirname + "/public/" + view);
+    }
+    next();
+}
+
+
 // ROUTES FOR OUR API
 // =============================================================================
 var router = express.Router();              // get an instance of the express Router
@@ -26,6 +34,11 @@ router.get('/check', function(req, res) {
     res.json({ message: 'OSC-EMOJI IS WORKING' });   
 });
 
+app.use(sendViewMiddleware);
+
+app.get('/', function(req, res) {
+    res.sendView('index.html', 'style.css');
+});
 
 router.post('/emoji', function(req, res) {
     emoji = {

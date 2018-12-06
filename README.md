@@ -7,6 +7,8 @@ inside the backend folder npm install
 
 server/public in script change the url if needed
 
-node backend/server.js
+node server/server.js
+
+localhost:8080/ (for sending emojis)
 
 ## Processing display
